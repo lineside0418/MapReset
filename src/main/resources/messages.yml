@@ -1,0 +1,35 @@
+start: '<prefix><aqua><bold><map></bold> の復元を開始します</aqua><gray> — World: <white><world>'
+template-start: '<prefix><aqua><bold><map></bold> のTemplate作成を開始します'
+template-complete: '<prefix><green><bold><map></bold> のTemplate作成が完了しました</green><gray> — Files: <white><files>'
+template-info: '<prefix><aqua>Template <white><map></white></aqua><gray> — World: <white><world></white>, Files: <white><files></white>, Created: <white><created>'
+template-invalid: '<prefix><red>Template <white><map></white> は使用できません: <reason>'
+aborted-players: '<prefix><red><map> の復元を中止しました。</red><gray> <white><world></white> に <yellow><players></yellow> players が残っています。'
+completed: '<prefix><green><bold><map> の復元が完了しました</bold></green><gray> — Changed: <white><changed></white>, Restored: <white><restored></white>, Deleted: <white><deleted></white>, Copied: <white><copied></white>, Duration: <white><duration>'
+completed-warning: '<prefix><gold><bold><map> の復元は警告付きで完了しました</bold></gold><gray> — Result: <yellow><result></yellow>, Changed: <white><changed></white>, Duration: <white><duration>'
+progress: '<prefix><yellow><map></yellow><gray> <phase>: <white><current></white> / <white><total></white>, Changed: <white><changed>'
+error: '<prefix><red><bold><map> は ERROR です</bold></red><gray>: <white><reason>'
+recovery: '<prefix><gold><bold>WARNING</bold>: <white><map></white> has an incomplete restore transaction. Run <yellow>/mapreset restore <map></yellow> to recover.'
+reloaded: '<prefix><green>Configuration and messages were reloaded.'
+reload-failed: '<prefix><red>Reload was rejected: <white><reason></white>.</red><gray> The previous settings remain active.'
+created: '<prefix><green>Registered <white><map></white> → <white><world></white>.'
+deleted: '<prefix><yellow>Unregistered <white><map></white>.</yellow><gray> Templates and backups were kept.'
+map-exists: '<prefix><red>Map <white><map></white> is already registered.'
+map-busy: '<prefix><red><map> is busy</red><gray> (state: <white><state></white>). Wait for it to finish, then retry.'
+list: '<prefix><aqua>Registered maps</aqua><gray>: <white><maps>'
+list-empty: '<prefix><gray>No maps are registered. Start with <white>/mapreset create <map> <world>'
+status: |-
+  <prefix><aqua><bold>Map: <map></bold></aqua>
+  <gray>World: <white><world>
+  State: <white><state>
+  Phase: <white><phase></white> <gray>(<white><current></white>/<white><total></white>)
+  Template: <white><template>
+  Last restore: <white><result></white> <gray>— Changed: <white><changed></white>, Copied: <white><copied></white>, Deleted: <white><deleted></white>, Duration: <white><duration></white>
+  Error: <white><error>
+usage: '<gray>Usage: <white>/mapreset <create|delete|template|restore|status|list|reload>'
+no-permission: '<red>You need the <white>mapreset.admin <red>permission.'
+command-error: '<prefix><red>MapReset: <reason>'
+custom-warning: '<prefix><gold><map> uses Paper 1.21.11 NMS custom-dimension reload; a backup is required.'
+queued: '<prefix><yellow><map></yellow><gray>: queued; validating world and template.'
+phase: '<prefix><yellow><map></yellow><gray>: <phase>'
+nms-custom-disabled: '<prefix><red><map>: custom-dimension.nms-reload is disabled. No files were changed.'
+reload-warning: '<prefix><gold><map>: reload verification mismatch was allowed by configuration: <reason>'

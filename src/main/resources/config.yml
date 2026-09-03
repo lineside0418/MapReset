@@ -1,0 +1,68 @@
+# MapReset global configuration. Run /mapreset reload after editing.
+io:
+  # Shared worker count for scanning, hashing, backups, copies, and transaction writes.
+  parallelism: 1
+  # Bytes transferred per I/O operation are controlled by this buffer size.
+  buffer-size-kib: 1024
+  # Reserved for future bounded task submission; must be positive.
+  queue-limit: 256
+
+comparison:
+  # EXACT is the only supported mode. Same-size files are SHA-256 hashed.
+  mode: EXACT
+  hash-buffer-kib: 1024
+
+restore:
+  # Custom dimensions always create a backup.
+  backup-before-replace: false
+  backup-directory: backups
+  restore-region: true
+  restore-entities: true
+  restore-poi: true
+  # false keeps disk impact predictable across multiple maps.
+  allow-concurrent-maps: false
+
+custom-dimension:
+  # Enables NMS reload of already-registered data-pack custom dimensions.
+  enabled: true
+  # Cannot be disabled while restoring a custom dimension.
+  require-backup: true
+  # Compare API-visible attributes after reload and enter ERROR on a mismatch.
+  verify-reload: true
+  error-on-verification-failure: true
+  # Uses a version-locked Paper 1.21.11 NMS loader for CUSTOM worlds after the
+  # safe on-disk restore. This is required because Bukkit.createWorld rejects
+  # World.Environment.CUSTOM. Keep backups enabled for custom dimensions.
+  nms-reload: true
+
+notifications:
+  # Only online players holding this scoreboard tag receive MapReset messages.
+  admin-tag: developer
+  prefix: '[MapReset] '
+  console: true
+  progress: true
+  progress-interval-seconds: 5
+  events:
+    start: true
+    aborted: true
+    completed: true
+    error: true
+    recovery: true
+    progress: true
+    # Enables custom-dimension compatibility warnings and warning completions.
+    warning: true
+
+recovery:
+  # If true, an incomplete restore is retried only after normal safety checks pass.
+  auto-resume: false
+  transaction-retention-days: 30
+
+lifecycle:
+  # Maximum time spent waiting for Paper to be outside world ticking.
+  retry-timeout-seconds: 10
+
+logging:
+  # Logs lifecycle phases, paths, comparison results, and reload diagnostics to Console.
+  console-detail: true
+  # Adds per-file restore entries; leave false for large worlds.
+  verbose: false

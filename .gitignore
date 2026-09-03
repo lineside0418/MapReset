@@ -1,0 +1,17 @@
+# Gradle build and local cache
+.gradle/
+build/
+
+# Local server/runtime diagnostics
+logs/
+*.log
+
+# IDE and operating-system files
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
+.DS_Store
+Thumbs.db

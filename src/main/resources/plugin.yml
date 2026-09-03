@@ -1,0 +1,15 @@
+name: MapReset
+version: '${version}'
+main: io.github.mapreset.MapResetPlugin
+api-version: '1.21'
+authors: [MapReset]
+description: Fast minigame map restoration using Minecraft region files.
+commands:
+  mapreset:
+    description: Manage map templates and region-file restores.
+    usage: /mapreset <create|delete|template|restore|status|list|reload>
+    permission: mapreset.admin
+permissions:
+  mapreset.admin:
+    description: Allows administration of MapReset.
+    default: op
