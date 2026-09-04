@@ -271,6 +271,8 @@ seed、environment、generator、biome provider、World path、min/max heightを
 - custom dimensionの実データpath（通常は`<world root>/dimensions/<namespace>/<path>/`）の
   `region/`、`entities/`、`poi/`をtemplate化・復元します。
 - 変更対象artifactは常にbackupされます。
+- `data/`のticket storageはtemplate復元対象にせず現在の状態を保持し、dynamic reload後は
+  Minecraft 1.21.11標準の`TicketStorage`再有効化を実行します。既存の`/forceload`は維持されます。
 
 > [!CAUTION]
 > このloaderはMinecraft/Paper **1.21.11専用**です。別のPaper buildやMinecraft versionへの

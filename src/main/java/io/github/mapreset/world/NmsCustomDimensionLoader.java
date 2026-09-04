@@ -8,6 +8,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.TicketStorage;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.storage.LevelStorageSource;
 import net.minecraft.world.level.storage.PrimaryLevelData;
@@ -87,6 +88,7 @@ public final class NmsCustomDimensionLoader {
             if (created == null) {
                 throw new IllegalStateException("Paper did not register reloaded dimension " + profile.key());
             }
+            reinstateForcedChunks(created);
             World world = created.getWorld();
             World existingByName = Bukkit.getWorld(profile.name());
             if (existingByName == null) {
@@ -134,5 +136,15 @@ public final class NmsCustomDimensionLoader {
 
     public static boolean supported(WorldProfile profile) {
         return Objects.equals("1.21.11", profile.minecraftVersion());
+    }
+
+    /**
+     * {@code MinecraftServer.prepareLevels} performs this during a normal server boot.
+     * A dynamically created level skips that startup pass, so restore its persisted
+     * {@link TicketStorage} tickets explicitly after the new chunk source exists.
+     */
+    private static void reinstateForcedChunks(ServerLevel level) {
+        level.getChunkSource().getDataStorage().computeIfAbsent(TicketStorage.TYPE)
+                .activateAllDeactivatedTickets();
     }
 }
